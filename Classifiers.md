@@ -73,7 +73,7 @@ from sklearn.naive_bayes import GaussianNB
 gnb = GaussianNB().fit(trainX_std,trainY)
 ```
 
-> ### Confusion Matrix and Classification_report 
+> ### Confusion Matrix and Classification Report 
 ```python
 from sklearn.metrics import confusion_matrix, classification_report
 predictYgnb = gnb.predict(testX_std)
