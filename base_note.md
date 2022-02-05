@@ -741,8 +741,8 @@ data = {'state': ['Ohio', 'Nevada'],
         'year': [2000, 2001],
         'pop': [1.5, 1.7]}
 pd.DataFrame(data)
-       state     year    pop
-0	Ohio	  2000    1.5
+       state    year    pop
+0	Ohio	2000    1.5
 1	Nevada	2001	1.7
 ```
 
@@ -781,17 +781,17 @@ frame = pd.DataFrame(np.arange(9).reshape((3,3)),
                      index = ['a','c','d'],
                      columns = ['Ohio','Texas','California'])
 frame.reindex(['a','b','c','d'])
-    Ohio  Texas  California
-a	0.0	1.0	2.0
-b	NaN	NaN	NaN
-c	3.0	4.0	5.0
-d	6.0	7.0	8.0
+    Ohio Texas California
+a   0.0	  1.0	2.0
+b   NaN	  NaN	NaN
+c   3.0	  4.0	5.0
+d   6.0	  7.0	8.0
 states = ['Texas','Utah','California']
 frame.reindex(columns = states)
     Texas  Utah  California
-a	1	NaN	2
-c	4	NaN	5
-d	7	NaN	8
+a     1	   NaN	    2
+c     4	   NaN	    5
+d     7	   NaN      8
 ```
 
 ### 轴向上删除条目
@@ -842,7 +842,7 @@ df1 + df2
 2	18.0 20.0 22.0 24.0 NaN
 3	NaN  NaN  NaN  NaN  NaN
 df1.add(df2, fill_value = 0)
-        a	b	c	d	e
+         a    b	   c	d    e
 0	0.0  2.0  4.0  6.0  4.0
 1	9.0  11.0 13.0 15.0 9.0
 2	18.0 20.0 22.0 24.0 14.0
@@ -898,11 +898,11 @@ frame = pd.DataFrame(np.arange(8).reshape((2,4)),
                      index = ['three','one'],
                      columns = list('dabc'))
 frame.sort_index()
-        d a b c
+      d a b c
 one   4 5 6 7
 three 0 1 2 3
 frame.sort_index(axis = 1)
-        a b c d
+      a b c d
 three 1 2 3 0
 one   5 6 7 4
 ```
@@ -922,14 +922,14 @@ dtype: int64
 ```python
 frame = pd.DataFrame({'b':[4, 7, -3, 2], 'a':[0, 1, 0, 1]})
 frame.sort_values(by = 'b')
-	  b	  a
-2	-3   0
+	b	a
+2      -3       0
 3	2	1
 0	4	0
 1	7	1
 frame.sort_values(by = ['a','b']) #先排序a再排序b
-      b	  a
-2	-3   0
+        b       a
+2      -3       0
 0	4	0
 3	2	1
 1	7	1
@@ -973,14 +973,14 @@ frame = pd.DataFrame({'b':[4.3, 7, -3, 2],
                       'a':[0, 1, 0, 1],
                       'c':[-2, 5, 8, -2.5]})
 frame.rank()
-        b   a   c
+         b   a   c
 0	3.0 1.5 2.0
 1	4.0 3.5 3.0
 2	1.0 1.5 4.0
 3	2.0 3.5 1.0
 frame.rank(axis = 'columns')
 
-        b   a   c
+         b   a   c
 0	3.0 2.0 1.0
 1	3.0 1.0 2.0
 2	1.0 2.0 3.0
@@ -1017,10 +1017,10 @@ dtype: float64
 ```python
 df = pd.DataFrame({'one': [1.4, 7.1, np.NaN, 0.75], 'two': [np.NaN, -4.5, np.NaN, -1.3]}, index = list('abcd'))
 df.describe()
-          one          two
-count  3.000000	2.000000
-mean   3.083333	-2.900000
-std	3.493685	2.262742
+          one              two
+count   3.000000	 2.000000
+mean    3.083333	-2.900000
+std	3.493685	 2.262742
 min	0.750000	-4.500000
 25%	1.075000	-3.700000
 50%	1.400000	-2.900000
@@ -1059,9 +1059,9 @@ data = df.Close
 rt = data.pct_change().dropna()
 rt['MSFT'].corr(rt['IBM'])
 rt.cov()
-Symbols   AAPL        IBM         MSFT        GOOG			
+Symbols   AAPL             IBM             MSFT            GOOG			
 AAPL	0.000252	0.000056	0.000080	0.000070
-IBM	 0.000056	0.000147	0.000073	0.000062
+IBM	0.000056	0.000147	0.000073	0.000062
 MSFT	0.000080	0.000073	0.000227	0.000106
 GOOG	0.000070	0.000062	0.000106	0.000218
 ```
@@ -1205,13 +1205,13 @@ df = pd.DataFrame(np.random.randn(6,3))
 df.iloc[:4, 1] = np.nan
 df.iloc[:2, 2] = np.nan
 df.fillna({1: 0.5, 2:0})
-          0            1            2
+            0               1               2
 0	-0.267317	0.500000	 0.000000
 1	-0.476142	0.500000	 0.000000
-2	0.400210	 0.500000	 1.256472
-3	-0.731970	0.500000	 -0.350872
-4	-0.939433	-0.489337	-0.804591
-5	-0.212698	-0.339140	0.312170
+2	 0.400210	0.500000	 1.256472
+3	-0.731970	0.500000	-0.350872
+4	-0.939433      -0.489337	-0.804591
+5	-0.212698      -0.339140	 0.312170
 ```
 
 - fillna的其他参数
@@ -1314,10 +1314,10 @@ data.rename(index = str.title, columns = str.upper)
 Colorado    4   5   6     7
 New York    8   9   10    11
 data.rename(index = {'Ohio': 'INDIANA'}, columns = {'three': 'peekaboo'}) #字典方法
-	       one two peekaboo four
-INDIANA     0   1   2      3
-Colorado    4   5   6      7
-New York    8   9   10     11
+	   one two peekaboo four
+INDIANA     0   1   2        3
+Colorado    4   5   6        7
+New York    8   9   10       11
 ```
 
 ### 离散化和分箱
@@ -1391,7 +1391,7 @@ sampler = np.random.permutation(5) #这里的整数表示想要的轴长度
 sampler
 array([1, 4, 0, 2, 3])
 df.take(sampler)
-      0   1   2   3
+    0   1   2   3
 1   4   5   6   7
 4   16  17  18  19
 0   0   1   2   3
@@ -1403,7 +1403,7 @@ df.take(sampler)
 ```python
 df = pd.DataFrame(np.arange(20).reshape((5,4)))
 df.sample(n = 3)
-      0   1   2   3
+    0   1   2   3
 3   12  13  14  15
 1   4   5   6   7
 0   0   1   2   3
@@ -1430,7 +1430,7 @@ values = np.random.rand(10)
 bins = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
 pd.get_dummies(pd.cut(values, bins, labels = ['0~0.2', '0.2~0.4', '0.4~0.6', '0.6~0.8', '0.8~1.0']))
 
-    0~0.2 0.2~0.4 0.4~0.6 0.6~0.8 0.8~1.0
+      0~0.2 0.2~0.4 0.4~0.6 0.6~0.8 0.8~1.0
 0	0	0	0	1	0
 1	0	0	0	0	1
 2	0	0	0	1	0
@@ -1587,26 +1587,26 @@ data.str.strip() #消除字符串两侧的空白
 ```python
 data = pd.Series(np.random.randn(9),
                  index = [list('aaabbccdd'), [1, 2, 3, 1, 3, 1, 2, 2, 3]])
-a  1    1.331587
+a    1    1.331587
      2    0.715279
      3   -1.545400
-b  1   -0.008384
+b    1   -0.008384
      3    0.621336
-c  1   -0.720086
+c    1   -0.720086
      2    0.265512
-d  2    0.108549
+d    2    0.108549
      3    0.004291
 dtype: float64
 data['b':'c']
-b  1   -0.008384
+b    1   -0.008384
      3    0.621336
-c  1   -0.720086
+c    1   -0.720086
      2    0.265512
 dtype: float64
 data.loc[['b', 'd']]
-b  1   -0.008384
+b    1   -0.008384
      3    0.621336
-d  2    0.108549
+d    2    0.108549
      3    0.004291
 dtype: float64
 data.loc[:, 2] #这里和DataFrame不同，即两个位置都是对于行的索引，只是不同维度
@@ -1619,20 +1619,20 @@ dtype: float64
 - 使用unstack和stack方法对多层索引在DataFrame中进行重排列
 ```python
 data.unstack() #unstack函数中有参数可以用来控制排列哪一层的轴，在只有两层索引时可以不考虑
-        1         2            3
+         1          2           3
 a    1.331587   0.715279   -1.545400
-b   -0.008384   NaN         0.621336
+b   -0.008384     NaN       0.621336
 c   -0.720086   0.265512      NaN
 d      NaN      0.108549    0.004291
 data.unstack().stack()
-a  1    1.331587
+a    1    1.331587
      2    0.715279
      3   -1.545400
-b  1   -0.008384
+b    1   -0.008384
      3    0.621336
-c  1   -0.720086
+c    1   -0.720086
      2    0.265512
-d  2    0.108549
+d    2    0.108549
      3    0.004291
 dtype: float64
 ```
@@ -1645,10 +1645,10 @@ frame = pd.DataFrame(np.arange(12).reshape((4, 3)),
 frame
             Ohio   Colorado
          Green Red  Green
-a   1    0	1	2
-      2	3	4	5
-b   1    6	7	8
-      2    9    10   11
+a     1    0	1	2
+      2	   3	4	5
+b     1    6	7	8
+      2    9    10      11
 frame.index.names = ['key1', 'key2']
 frame.columns.names = ['state', 'color']
 frame
@@ -1656,9 +1656,9 @@ state       Ohio   Colorado
 color    Green  Red  Green
 key1 key2			
 a     1     0	1	2
-        2	 3	4	5
+      2	    3	4	5
 b     1     6	7	8
-        2     9    10   11
+      2     9   10      11
 ```
 
 ### 重排序和层级排序
@@ -1670,9 +1670,9 @@ state       Ohio   Colorado
 color    Green  Red  Green
 key2 key1			
 1     a     0	1	2
-2     a	 3	4	5
+2     a	    3	4	5
 1     b     6	7	8
-2     b     9    10   11
+2     b     9   10      11
 ```
 
 - 使用sort_index方法来选择某一层的索引进行排序，也可以使用参数axis来选择行或列
@@ -1683,8 +1683,8 @@ color    Green  Red  Green
 key1 key2			
 a     1     0	1	2
 b     1     6	7	8
-a     2	 3	4	5
-b     2     9    10   11
+a     2	    3	4	5
+b     2     9   10      11
 ```
 
 ### 按层级进行汇总统计
@@ -1693,17 +1693,17 @@ b     2     9    10   11
 ```python
 frame.sum(level = 1)
 state	Ohio	Colorado
-color	Green	Red	Green
+color	Green	Red  Green
 key2			
-1        6       8   10
-2       12      14   16
+1        6       8    10
+2        12      14   16
 frame.sum(level = 'state', axis = 1)
 state     Ohio	Colorado
 key1 key2		
 a     1	   1      2
-        2	   7      5
-b	 1      13      8
-        2      19     11
+      2	   7      5
+b     1    13     8
+      2    19     11
 ```
 
 ### 使用DataFrame的列进行索引
@@ -1715,17 +1715,17 @@ frame = pd.DataFrame({'a':range(7),
                       'c':['one', 'one', 'one', 'two', 'two', 'two', 'two'],
                       'd':[0, 1, 2, 0, 1, 2, 3]})
 frame.set_index(['c', 'd']) #在前的为level低的，即外侧；使用参数drop=False可以将转换成索引的列仍留在DataFrame中
-		     a	b
-c	 d		
-one   0    0	7
+		a	b
+c	d		
+one     0       0	7
         1	1	6
         2	2	5
-two   0    3    4
+two     0       3       4
         1	4	3
         2	5	2
         3	6	1
 frame.set_index(['c', 'd']).reset_index()
-       c	  d	a	b
+         c	d	a	b
 0	one	0	0	7
 1	one	1	1	6
 2	one	2	2	5
@@ -1746,7 +1746,7 @@ frame.set_index(['c', 'd']).reset_index()
 df1 = pd.DataFrame({'key':list('bbacaab'), 'data1':range(7)})
 df2 = pd.DataFrame({'key':list('abd'), 'data2':range(3)})
 pd.merge(df1, df2, on = 'key') #参数on决定连接键，须为两表都有的列
-      key data1 data2
+       key    data1   data2
 0	b	0	1
 1	b	1	1
 2	b	6	1
@@ -1761,7 +1761,7 @@ df3 = pd.DataFrame({'lkey':list('bbacaab'), 'data1':range(7)})
 df4 = pd.DataFrame({'rkey':list('abd'), 'data2':range(3)})
 pd.merge(df3, df4, left_on = 'lkey', right_on = 'rkey')
 
-     lkey data1 rkey data2
+       lkey   data1   rkey    data2
 0	b	0	b	1
 1	b	1	b	1
 2	b	6	b	1
@@ -1794,7 +1794,7 @@ s1 = pd.DataFrame([0, 1], index = list('ab'))
 s2 = pd.DataFrame([2, 3, 4], index = list('cde'))
 s3 = pd.DataFrame([5, 6], index = list('fg'))
 pd.concat([s1, s2, s3]) #默认为沿着axis=0的方向生效，即增添行
-       0
+        0
 a	0
 b	1
 c	2
@@ -1811,14 +1811,14 @@ d	NaN	3.0
 e	NaN	4.0
 s4 = pd.DataFrame([0, 1, 5, 6], index = list('abfg'))
 pd.concat([s1, s4], axis = 1, join = 'inner') #join='inner'为内连接，默认为join='outer'，只有这两个
-	   0	0
+	0	0
 a	0	0
 b	1	1
 pd.concat([s1, s4], keys = ['one', 'two']) #使用keys关键字设置一个多层索引
-           0
-one a	0
+        0
+one   a	0
       b	1
-two a	0
+two   a	0
       b	1
       f	5
       g	6 
@@ -1830,17 +1830,17 @@ df1 = pd.DataFrame(np.arange(12).reshape((3, 4)), index = list('abc'), columns =
 df2 = pd.DataFrame(np.arange(2).reshape((2, 2)), index = list('ac'), columns = ['three', 'four'])
 pd.concat([df1, df2], axis = 1, keys = ['level1', 'level2'])
             level1	       level2
-      one  two three four  five   six
+       one     two    three    four     five    six
 a	0	1	2	3	0.0	1.0
 b	4	5	6	7	NaN	NaN
-c	8	9	10   11   2.0    3.0
+c	8	9	10      11      2.0     3.0
 pd.concat([df1, df2], ignore_index = True) #ignore_index=True表示不沿着连接轴保留索引
-      one    two	three  four   five   six
-0   0.0	1.0	2.0	3.0	NaN	NaN
-1   4.0	5.0	6.0	7.0	NaN	NaN
-2   8.0	9.0	10.0   11.0   NaN    NaN
-3   NaN	NaN	NaN	NaN	0.0	1.0
-4   NaN	NaN	NaN	NaN	2.0	3.0
+    one   two  three    four    five    six
+0   0.0	  1.0	2.0	3.0	NaN	NaN
+1   4.0	  5.0	6.0	7.0	NaN	NaN
+2   8.0	  9.0	10.0    11.0    NaN     NaN
+3   NaN	  NaN	NaN	NaN	0.0	1.0
+4   NaN	  NaN	NaN	NaN	2.0	3.0
 ```
 
 ### 联合重叠数据
@@ -1861,7 +1861,7 @@ df1 = pd.DataFrame({'a': [1, np.nan, 5, np.nan],
 df2 = pd.DataFrame({'a': [5, 4, np.nan, 3, 7],
                    'b': [np.nan, 3, 4, 6, 8]})
 df1.combine_first(df2) #若有重复保留df1的
-        a	  b	  c
+         a	 b	 c
 0	1.0	NaN	2.0
 1	4.0	2.0	6.0
 2	5.0	4.0	10.0
@@ -1892,28 +1892,28 @@ state   Ohio Colorado
 number		
 one	  0	3
 two	  1	4
-three	2	5
+three	  2	5
 ```
 
 - stack的其他参数
 ```python
 data = pd.Series([0, 1, 2, 3, 4, 5, 6], index = [['one', 'one', 'one', 'one', 'two', 'two', 'two'], list('abcdcde')])
 data
-one   a    0
+one     a    0
         b    1
         c    2
         d    3
-two   c    4
+two     c    4
         d    5
         e    6
 dtype: int64
 data.unstack().stack(dropna = False) #保留缺失值
-one   a    0.0
+one     a    0.0
         b    1.0
         c    2.0
         d    3.0
         e    NaN
-two   a    NaN
+two     a    NaN
         b    NaN
         c    4.0
         d    5.0
@@ -2204,7 +2204,7 @@ key_list = ['one', 'one', 'one', 'two', 'two']
 people.groupby([len, key_list]).min()
              a         b         c         d         e
 3   one -0.899791  0.466837  0.694990  0.183670 -0.742098
-      two  0.988612  0.478948 -0.635451  0.234414  0.954318
+    two  0.988612  0.478948 -0.635451  0.234414  0.954318
 5   one  1.268216  1.312615  1.111863  0.098699  0.978446
 6   two  2.021687 -0.790612  1.113606  2.051655 -0.376081
 ```
@@ -2217,7 +2217,7 @@ df = pd.DataFrame(np.random.randn(4, 5),
                   columns = [['US', 'US', 'US', 'JP', 'JP'], [1, 3, 5, 1, 3]])
 df.columns.names = ['city', 'tenor']
 df.groupby(level = 'city', axis = 1).count()
-city JP   US
+city    JP      US
 0	2	3
 1	2	3
 2	2	3
@@ -2243,7 +2243,7 @@ df = pd.DataFrame({'key1': list('aabba'),
 def max_to_min(arr):
     return arr.max() - arr.min()
 df.groupby('key1').agg(max_to_min)
-        data1	   data2
+          data1	         data2
 key1		
 a	2.041328	2.174891
 b	2.013652	0.303047
@@ -2262,23 +2262,23 @@ grouped = tips.groupby(['smoker', 'day'])
 def max_to_min(arr):
   return arr.max() - arr.min()
 grouped['tip_pct'].agg(['mean', 'sum', max_to_min])
-               mean    sum   max_to_min
+             mean    sum   max_to_min
 smoker day			
 No     Sat  0.1605  0.1605  0.0000
-         Sun  0.1130  0.2260  0.1072
+       Sun  0.1130  0.2260  0.1072
 Yes    Sat  0.1433  0.2866  0.0070
-         Sun  0.1862  0.1862  0.0000
+       Sun  0.1862  0.1862  0.0000
 ```
 
 - 使用二维元组的方法对Groupby对象各列的名称进行更改
 ```python
 grouped['tip_pct'].agg([('foo', 'mean'), ('bar', 'sum')])
-               foo     bar  
+              foo     bar  
 smoker day			
 No     Sat  0.1605  0.1605  
-         Sun  0.1130  0.2260  
+       Sun  0.1130  0.2260  
 Yes    Sat  0.1433  0.2866  
-         Sun  0.1862  0.1862
+       Sun  0.1862  0.1862
 ```
 
 - 将多个函数同时应用到多个列
@@ -2286,19 +2286,19 @@ Yes    Sat  0.1433  0.2866
 result = grouped['tip_pct', 'tip'].agg(['count', 'mean', 'max'])
 result
 	          tip_pct      	        tip
-              count   mean	  max	count	mean	max
+              count      mean	  max	count	mean	max
 smoker day						
-No     Sat	1	0.1605	0.1605	1	1.660	1.66
-         Sun	2	0.1130	0.1666	2	2.255	3.50
-Yes    Sat	2	0.1433	0.1468	2	3.460	3.61
-         Sun	1	0.1862	0.1862	1	4.710	4.71
+No     Sat	1	0.1605	0.1605	 1	1.660	1.66
+       Sun	2	0.1130	0.1666	 2	2.255	3.50
+Yes    Sat	2	0.1433	0.1468	 2	3.460	3.61
+       Sun	1	0.1862	0.1862	 1	4.710	4.71
 result['tip']
-		      count	mean	max
+	      count	 mean	 max
 smoker  day			
 No      Sat	1	1.660	1.66
-          Sun	2	2.255	3.50
+        Sun	2	2.255	3.50
 Yes     Sat	2	3.460	3.61
-          Sun	1	4.710	4.71
+        Sun	1	4.710	4.71
 ```
 
 - 使用字典将不同的函数应用在不同列
@@ -2308,9 +2308,9 @@ grouped.agg({'tip': ['min', 'max', 'mean'], 'tip_pct': 'sum'})
                 min	  max	 mean	 sum
 smoker day				
 No     Sat	1.66	1.66	1.660	0.1605
-         Sun	1.01	3.50	2.255	0.2260
+       Sun	1.01	3.50	2.255	0.2260
 Yes    Sat	3.31	3.61	3.460	0.2866
-         Sun	4.71	4.71	4.710	0.1862
+       Sun	4.71	4.71	4.710	0.1862
 ```
 
 ### 返回不含行索引的聚合数据
@@ -2318,11 +2318,11 @@ Yes    Sat	3.31	3.61	3.460	0.2866
 - 使用as_index参数来禁用分组键作为索引
 ```python
 tips.groupby(['day', 'smoker'], as_index = False).mean()
-	  day	smoker  tip    size    tip_pct
+	day	smoker   tip    size    tip_pct
 0	Sat	No	1.660	3.0	0.1605
-1	Sat	Yes   3.460	3.0	0.1433
+1	Sat	Yes     3.460	3.0	0.1433
 2	Sun	No	2.255	2.5	0.1130
-3	Sun	Yes   4.710	4.0	0.1862
+3	Sun	Yes     4.710	4.0	0.1862
 ```
 
 ## 应用：通用拆分-应用-联合
@@ -2332,12 +2332,12 @@ tips.groupby(['day', 'smoker'], as_index = False).mean()
 def top(df, column = 'tip_pct'):
     return df.sort_values(by = column)
 tips.groupby('smoker').apply(top)
-                 tip   smoker  day   size  tip_pct
+                 tip   smoker   day    size    tip_pct
 smoker						
-No       0	1.01    No	 Sun	2	0.0594
-           1	1.66	No	 Sat	3	0.1605 
-           2	3.50	No	 Sun	3	0.1666
-Yes      3	3.31	Yes	Sat	2	0.1398
+No         0	1.01    No	Sun	2	0.0594
+           1	1.66	No	Sat	3	0.1605 
+           2	3.50	No	Sun	3	0.1666
+Yes        3	3.31	Yes	Sat	2	0.1398
            4	3.61	Yes	Sat	4	0.1468
            5	4.71	Yes	Sun	4	0.1862
 tips.group('smoker').apply(top, column = 'tip') #也可在apply中传递函数参数
@@ -2348,7 +2348,7 @@ tips.group('smoker').apply(top, column = 'tip') #也可在apply中传递函数�
 - 压缩分组键以禁用分层索引
 ```python
 tips.groupby('smoker', group_keys = False).apply(top)
-        tip  Smoker day  size  tip_pct
+         tip  Smoker day      size     tip_pct
 0	1.01	No   Sun	2	0.0594
 1	1.66	No   Sat	3	0.1605
 2	3.50	No   Sun	3	0.1666
@@ -2365,7 +2365,7 @@ frame = pd.DataFrame({'data1': np.random.randn(1000), 'data2': np.random.randn(1
 quartiles = pd.cut(frame.data1, 4)
 grouped = frame.data2.groupby(quartiles)
 grouped.agg(['min','max','count','mean'])
-                       min         max     count	mean
+                       min         max         count	mean
 data1				
 (-3.21, -1.733]   -2.049611	1.190694	33   -0.242130
 (-1.733, -0.262]  -2.462223	2.793166	356  -0.062656
@@ -2374,7 +2374,7 @@ data1
 groupping = pd.qcut(frame.data1, 10, labels = False)
 grouped = frame.data2.groupby(groupping)
 grouped.agg(['min','max','count','mean']) 
-          min         max      count     mean
+          min              max         count       mean
 data1				
 0	-2.411232	2.793166	100	-0.114321
 1	-2.333174	2.448005	100	-0.231702
@@ -2493,12 +2493,12 @@ tips = pd.DataFrame({'tip': [1.01, 1.66, 3.50, 3.31, 3.61, 4.71],
                    'size': [2, 3, 3, 2, 4, 4],
                    'tip_pct': [0.0594, 0.1605, 0.1666, 0.1398, 0.1468, 0.1862]})
 tips.pivot_table(index = ['day', 'smoker']) #参数index控制透视表的行，最后结果返回的是分组的平均值
-             size  tip  tip_pct
+           size  tip  tip_pct
 day smoker			
 Sat  No    3.0  1.660  0.1605
-       Yes   3.0  3.460  0.1433
+     Yes   3.0  3.460  0.1433
 Sun  No    2.5  2.255  0.1130
-       Yes   4.0  4.710  0.1862
+     Yes   4.0  4.710  0.1862
 tips.pivot_table(['tip_pct', 'size'], index = 'day', columns = 'smoker') #columns控制透视表的列
           size      tip_pct
 smoker  No   Yes  No      Yes
@@ -2527,7 +2527,7 @@ data = pd.DataFrame({'sample': range(1, 11),
 pd.crosstab(data.Nationality, data.Handedness, margins = True)
 Handedness   Left Right All
 Nationality			
-Japan         2     3	5
+Japan         2     3	 5
 USA           1     4    5
 All           3     7    10
 ```
