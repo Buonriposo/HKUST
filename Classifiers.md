@@ -50,16 +50,6 @@ predictY = lsvc.predict(testX_std)
 from sklearn.metrics import classification_report
 print(classification_report(testY, predictY))
 ```
-
-                  precision    recall  f1-score   support
-    
-               0       0.88      1.00      0.93         7
-               1       1.00      0.80      0.89         5
-    
-        accuracy                           0.92        12
-       macro avg       0.94      0.90      0.91        12
-    weighted avg       0.93      0.92      0.91        12
-    
     
 
 
@@ -71,8 +61,6 @@ predictY2 = ksvm.predict(testX_std)
 print(classification_report(testY,predictY2))
 ```
 
-    [1 1 0 1 0 0 1 0 1 1 0 0]
-    
 
 
 ```python
@@ -92,21 +80,6 @@ plt.xlabel('k')
 plt.ylabel('Accuracy Rate')
 print('Max accuracy:', max(accuracy_rate), 'at k =', accuracy_rate.index(max(accuracy_rate))+1)
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-1-110d078561db> in <module>
-          3 from sklearn.metrics import accuracy_score
-          4 accuracy_rate = []
-    ----> 5 n_train = len(trainY)
-          6 for i in range(1, n_train + 1):
-          7     knn = KNeighborsClassifier(n_neighbors = i).fit(trainX_std, trainY)
-    
-
-    NameError: name 'trainY' is not defined
 
 
 
@@ -156,20 +129,6 @@ with open('tree.dot') as f:
 from sklearn.naive_bayes import GaussianNB
 gnb = GaussianNB().fit(trainX_std,trainY)
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-1-3fa7b7ca6ea0> in <module>
-          1 ## naive Bayes
-          2 from sklearn.naive_bayes import GaussianNB
-    ----> 3 gnb = GaussianNB().fit(trainX_std,trainY)
-    
-
-    NameError: name 'trainX_std' is not defined
-
 
 
 ```python
