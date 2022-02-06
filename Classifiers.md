@@ -19,14 +19,20 @@ from sklearn.preprocessing import StandardScaler
 trainX, testX, trainY, testY = train_test_split(z[['area','bathrooms']], z['y1'], test_size = 0.25, random_state = 33)
 ss = StandardScaler()
 trainX_std = ss.fit_transform(trainX)
-testX_std = ss.transform(testX)
+testX_std = ss.transform(testX) # Use the mean and sd of trainX to standardize testX to make sure that testX and trainX are in the same scale after transformation.
 ```
 
-> ### l2-regularized logistic model
+> ### l2-regularized(default) logistic model
 ```python
 from sklearn.linear_model import LogisticRegression
 lr = LogisticRegression(solver = 'liblinear').fit(trainX_std, trainY)
+#可选参数
+LogisticRegression(solver = 'lbfgs', penalty = 'l2', C = 1)
 ```
+* 'lbfgs' is the default solver and it's often used for multi-class classification; 
+* 'liblinear' is a good choice for small datasets but it can only be used for 2-class classification
+* penalty can be 'l1' or 'l2', the default value is 'l2'
+
 > ### Linear SVM
 ```python
 from sklearn.svm import LinearSVC
@@ -72,7 +78,21 @@ dtree = DecisionTreeClassifier().fit(trainX_std,trainY)
 from sklearn.naive_bayes import GaussianNB
 gnb = GaussianNB().fit(trainX_std,trainY)
 ```
-
+> ### ROC curve and AUC
+```
+from sklearn.metrics import roc_curve, auc
+fpr, tpr, thresholds = roc_curve(testY, lr.predict_proba(testX_std)[:,1])
+roc_auc = auc(fpr, tpr)
+plt.title('ROC Curve')
+plt.plot(fpr, tpr, marker = 'o', label = 'AUC = %0.3f' % roc_auc)
+plt.legend(loc = 'best')
+plt.plot([0,1], [0,1], 'r--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.0])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.show()
+```
 > ### Confusion Matrix and Classification Report 
 ```python
 from sklearn.metrics import confusion_matrix, classification_report
