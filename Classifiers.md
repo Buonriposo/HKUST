@@ -39,7 +39,7 @@ from sklearn.svm import LinearSVC
 lsvc = LinearSVC().fit(trainX_std, trainY)
 predictY = lsvc.predict(testX_std)
 ```
-* LinearSVC()同样可选参数penalty和C
+* LinearSVC( )同样可选参数penalty和C
 
 > ### kernel SVM
 ```python
@@ -79,8 +79,9 @@ dtree = DecisionTreeClassifier().fit(trainX_std,trainY)
 from sklearn.naive_bayes import GaussianNB
 gnb = GaussianNB().fit(trainX_std,trainY)
 ```
+
 > ### ROC curve and AUC
-```
+```python
 from sklearn.metrics import roc_curve, auc
 fpr, tpr, thresholds = roc_curve(testY, lr.predict_proba(testX_std)[:,1])
 roc_auc = auc(fpr, tpr)
@@ -94,6 +95,7 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.show()
 ```
+
 > ### Confusion Matrix and Classification Report 
 ```python
 from sklearn.metrics import confusion_matrix, classification_report
