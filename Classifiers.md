@@ -39,11 +39,12 @@ from sklearn.svm import LinearSVC
 lsvc = LinearSVC().fit(trainX_std, trainY)
 predictY = lsvc.predict(testX_std)
 ```
+* LinearSVC()同样可选参数penalty和C
 
 > ### kernel SVM
 ```python
 from sklearn.svm import SVC
-ksvm = SVC(kernel = 'rbf', C=1, gamma=0.1).fit(trainX_std,trainY)
+ksvm = SVC(kernel = 'rbf', C=1, gamma = 0.1).fit(trainX_std,trainY)
 predictY2 = ksvm.predict(testX_std)
 ```
 
@@ -59,7 +60,7 @@ for i in range(1, n_train + 1):
     accuracy_rate.append(accuracy_score(testY, pred_i))
 
 plt.figure(figsize=(10,6))
-plt.plot(range(1, n_train+1), accuracy_rate, color='blue',linestyle='dashed',marker='o',markerfacecolor='red',markersize=10)
+plt.plot(range(1, n_train+1), accuracy_rate, color = 'blue', linestyle = 'dashed', marker = 'o', markerfacecolor = 'red', markersize = 10)
 plt.xlabel('k')
 plt.ylabel('Accuracy Rate')
 print('Max accuracy:', max(accuracy_rate), 'at k =', accuracy_rate.index(max(accuracy_rate))+1)
