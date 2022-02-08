@@ -32,6 +32,7 @@ bg = bc().fit(trainX_std,trainY)
 from sklearn.ensemble import RandomForestClassifier
 rforest = RandomForestClassifier().fit(trainX_std, trainY)
 ```
+* Parameters: n_estimators = 100
 
 > ### Check the mean of Rf and Dt
 ```python
@@ -67,6 +68,7 @@ print('mean of DT :',np.mean(al_DT))
 from sklearn.ensemble import AdaBoostClassifier
 adaB = AdaBoostClassifier(n_estimators = 6).fit(trainX_std,trainY)
 ```
+* Parameters: base_estimator = None, default estimator is DecisionTreeClassifier; n_estimator = 100, default 50
 
 > ### Find the best number of classifiers
 ```python
@@ -86,7 +88,7 @@ plt.plot(accuracy, color = 'blue', linestyle = 'dashed', marker = 'o', markerfac
 from sklearn.ensemble import GradientBoostingClassifier
 gBoosting = GradientBoostingClassifier().fit(trainX_std,trainY)
 ```
-
+* parameters: loss = 'exponential', default = 'deviance'. For loss 'exponential' gradient boosting recovers the AdaBoost algorithm; n_estimators = 100
 
 > ### Voting classifier
 ```python
@@ -121,11 +123,9 @@ print('mean of RF :',np.mean(al_RF))
 print('mean of DT :',np.mean(al_DT))
 print('mean of em_all :',np.mean(al_all))
 ```
+* parameters: voting = 'hard', 'hard' uses predicted class labels for majority rule voting, while 'soft' predicts the class label based on the argmax of the sums of the predicted probabilities; weights = [1, 1, 2]
 
-    mean of RF : 0.70225
-    mean of DT : 0.6840833333333333
-    mean of em_all : 0.78225
-    
+
 
 > ### Confusion Matrix and Classification Report
 ```python
