@@ -71,7 +71,17 @@ print('Max accuracy:', max(accuracy_rate), 'at k =', accuracy_rate.index(max(acc
 from sklearn.tree import DecisionTreeClassifier
 dtree = DecisionTreeClassifier().fit(trainX_std,trainY)
 ```
-
+> ### Produce a picture of decision tree
+```python
+from sklearn.tree import export_graphviz
+export_graphviz(dtree, out_file = 'tree.dot', class_names = ['Low', 'High'], feature_names = ['area', bathrooms'], impurity = False, filled = True)
+import graphviz
+with open('tree.dot') as f:
+    dotgraph = f.read()
+import os
+os.environ['PATH'] += os.pathsep + 'C:\Users\ycjj\Desktop\Graphviz2.38\bin\'
+graphviz.Source(dotgraph)
+```
 
 > ### Naive Bayes
 
