@@ -26,7 +26,7 @@ testX_std = ss.transform(testX) # Use the mean and sd of trainX to standardize t
 ```python
 from sklearn.linear_model import LogisticRegression
 lr = LogisticRegression(solver = 'liblinear').fit(trainX_std, trainY)
-#可选参数
+#parameters
 LogisticRegression(solver = 'lbfgs', penalty = 'l2', C = 1)
 ```
 * 'lbfgs' is the default solver and it's often used for multi-class classification; 
@@ -39,7 +39,7 @@ from sklearn.svm import LinearSVC
 lsvc = LinearSVC().fit(trainX_std, trainY)
 predictY = lsvc.predict(testX_std)
 ```
-* LinearSVC( )同样可选参数penalty和C
+* parameters: penalty and C
 
 > ### kernel SVM
 ```python
