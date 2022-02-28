@@ -1936,7 +1936,7 @@ dtype: float64
 import matplotlib.pyplot as plt
 fig = plt.figure() #会出现一个空白的绘图窗口，但Jupyter中没有
 ax1 = fig.add_subplot(2, 2, 1) #这里前两个参数表示size，即2*2，后面表示这四个图形中的第一个
-ax2 = fig.add_subplot(2, 2, 2)
+ax2 = fig.add_subplot(2, 2, 2) #这里也可以用222代替，如果参数为数字的话一定是三位数
 plt.plot(range(10)) #当我们此时使用plt.plot，会在最后一个图片和子图上绘制
 ```
 
