@@ -1031,8 +1031,8 @@ max	7.100000	-1.300000
 - 描述性统计和汇总统计
 ```python
 count #非NA值的个数
-argmin, argmax #计算最小值，最大值所在的索引位置（整数）
-idxmin, idxmax #计算最小值，最大值所在的索引位置
+argmin, argmax #计算最小值，最大值所在的索引位置（整数），适合和iloc搭配
+idxmin, idxmax #计算最小值，最大值所在的索引位置，也就是说比较适合和loc搭配索引
 quantile #计算样本的从0到1间的分位数
 prod #所有值的积
 var #值的样本方差
